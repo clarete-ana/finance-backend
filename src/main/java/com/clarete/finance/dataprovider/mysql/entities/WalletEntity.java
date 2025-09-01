@@ -1,12 +1,12 @@
-package com.clarete.finance.domain;
+package com.clarete.finance.dataprovider.mysql.entities;
 
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "accounts")
-public class Account {
+@Table(name = "wallets")
+public class WalletEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,13 +17,9 @@ public class Account {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private UserEntity user;
 
-    public Account() {
-    }
-
-    public Account(BigDecimal balance, User user) {
-        this.balance = balance != null ? balance : BigDecimal.ZERO;
+    public WalletEntity(UserEntity user) {
         this.user = user;
     }
 
@@ -36,15 +32,7 @@ public class Account {
         return balance;
     }
 
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
-    }
-
-    public User getUser() {
+    public UserEntity getUser() {
         return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }

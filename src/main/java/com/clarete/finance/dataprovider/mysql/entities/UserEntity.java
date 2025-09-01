@@ -1,10 +1,10 @@
-package com.clarete.finance.domain;
+package com.clarete.finance.dataprovider.mysql.entities;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,7 +13,7 @@ public class User {
     private String name;
 
     @Column(nullable = false, unique = true, length = 14)
-    private String document;
+    private String cpfCnpj;
     @Column(nullable = false, unique = true)
     private String email;
 
@@ -22,14 +22,11 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private UserType type;
+    private UserTypeEnum type;
 
-    public User() {
-    }
-
-    public User(String name, String document, String email, String password, UserType type) {
+    public UserEntity(String name, String document, String email, String password, UserTypeEnum type) {
         this.name = name;
-        this.document = document;
+        this.cpfCnpj = document;
         this.email = email;
         this.password = password;
         this.type = type;
@@ -43,31 +40,15 @@ public class User {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDocument() {
-        return document;
-    }
-
-    public void setDocument(String document) {
-        this.document = document;
+    public String getCpfCnpj() {
+        return cpfCnpj;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }
