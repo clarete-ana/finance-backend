@@ -1,5 +1,6 @@
 package com.clarete.finance.dataprovider.mysql.entities;
 
+import com.clarete.finance.common.UserTypeEnum;
 import jakarta.persistence.*;
 
 @Entity
