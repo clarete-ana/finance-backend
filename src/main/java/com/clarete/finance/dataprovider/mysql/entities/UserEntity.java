@@ -25,12 +25,12 @@ public class UserEntity {
     @Column(nullable = false)
     private UserTypeEnum type;
 
-    public UserEntity(String name, String document, String email, String password, UserTypeEnum type) {
+    public UserEntity(String name, String document, String email, String password, int type) {
         this.name = name;
         this.cpfCnpj = document;
         this.email = email;
         this.password = password;
-        this.type = type;
+        this.type = UserTypeEnum.fromValue(type);
     }
 
     public Long getId() {
@@ -51,5 +51,9 @@ public class UserEntity {
 
     public String getPassword() {
         return password;
+    }
+
+    public UserTypeEnum getType() {
+        return type;
     }
 }

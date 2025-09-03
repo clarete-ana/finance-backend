@@ -1,6 +1,7 @@
 package com.clarete.finance.entrypoint.controller;
 
-import com.clarete.finance.dataprovider.mysql.AccountService;
+import com.clarete.finance.core.domain.User;
+import com.clarete.finance.core.service.AccountService;
 import com.clarete.finance.entrypoint.dto.UserRequestDTO;
 import com.clarete.finance.entrypoint.dto.UserResponseDTO;
 import com.clarete.finance.mapper.UserMapper;
@@ -21,7 +22,7 @@ public class AccountController {
 
     @PostMapping
     private ResponseEntity<UserResponseDTO> create(@RequestBody UserRequestDTO user) throws Exception {
-        accountService.createUser(UserMapper.userRequesttoEntity(user));
-        return ResponseEntity.ok(UserMapper.userRequesttoUserResponse(user));
+        User userDomain = accountService.createUser(user);
+        return ResponseEntity.ok(UserMapper.domaintoResponse(userDomain));
     }
 }
