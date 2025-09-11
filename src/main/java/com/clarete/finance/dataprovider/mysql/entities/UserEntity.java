@@ -33,6 +33,9 @@ public class UserEntity {
         this.type = UserTypeEnum.fromValue(type);
     }
 
+    public UserEntity() {
+    }
+
     public Long getId() {
         return id;
     }

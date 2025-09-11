@@ -23,6 +23,9 @@ public class WalletEntity {
         this.user = user;
     }
 
+    public WalletEntity() {
+    }
+
     public Long getId() {
         return id;
     }
@@ -34,5 +37,9 @@ public class WalletEntity {
 
     public UserEntity getUser() {
         return user;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
 }
